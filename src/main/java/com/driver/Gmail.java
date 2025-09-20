@@ -25,6 +25,7 @@ public class Gmail extends Email {
         Message message1=new Message(date, sender, message);
         if(this.inbox.size()==this.inboxCapacity){
             Integer oldMail=this.inbox.keySet().iterator().next();
+            trash.put(++trashCounter,this.inbox.get(oldMail));
             this.inbox.remove(oldMail);
         }
         this.inbox.put(++this.idCounter,message1);
@@ -47,7 +48,7 @@ public class Gmail extends Email {
             if(message1.message.equals(message)){
                 integer1=integer;
                 //trash.put(++trashCounter,message1);
-                return;
+                break;
             }
         }
         if(integer1!=null){
@@ -115,12 +116,13 @@ public class Gmail extends Email {
 
     public void emptyTrash(){
         // clear all mails in the trash
-        if(this.trash.isEmpty()){
-            return;
-        }
-        for (Integer integer: this.trash.keySet()){
-            this.trash.remove(integer);
-        }
+//        if(this.trash.isEmpty()){
+//            return;
+//        }
+//        for (Integer integer: this.trash.keySet()){
+//            this.trash.remove(integer);
+//        }
+        this.trash.clear();
     }
 
     public int getInboxCapacity() {
