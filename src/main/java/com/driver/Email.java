@@ -11,11 +11,11 @@ public class Email {
     }
 
     public String getEmailId() {
-        return emailId;
+        return this.emailId;
     }
 
     public String getPassword() {
-        return password;
+        return this.password;
     }
 
     public void changePassword(String oldPassword, String newPassword){
@@ -25,7 +25,7 @@ public class Email {
         // 3. It contains at least one lowercase letter
         // 4. It contains at least one digit
         // 5. It contains at least one special character. Any character apart from alphabets and digits is a special character
-        if(oldPassword.equals(getPassword())) {
+        if(!oldPassword.equals(this.getPassword())) {
             return;
         }
         if(newPassword.length()<8){
